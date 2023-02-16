@@ -2,6 +2,7 @@ package io.github.skullhound.boodschappenlijst
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -14,14 +15,12 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         val data = ArrayList<ItemsViewModel>()
-
-        for (i in 1..100) {
-            data.add(ItemsViewModel("Item $i"))
-        }
-
         val adapter = CustomAdapter(data)
-
         recyclerView.adapter = adapter
+
+        fun addGrocery(view: View) {
+            data.add(ItemsViewModel("Lorem Ipsum Grocery"))
+        }
 
     }
 }
