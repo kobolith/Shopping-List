@@ -4,7 +4,8 @@
     android:id="@+id/cardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginVertical="4dp"
     app:cardBackgroundColor="#DCDCDC"
     app:cardCornerRadius="3dp"
     app:contentPadding="12dp">
@@ -26,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#121212"
-            android:layout_marginStart="10dp" />
+            android:layout_marginStart="5dp" />
 
 
     </LinearLayout>

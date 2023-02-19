@@ -1,5 +1,6 @@
 package io.github.skullhound.boodschappenlijst
 
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,12 @@ class CustomAdapter(private val mList: List<ItemsViewModel>) : RecyclerView.Adap
 
         init {
             textView = view.findViewById(R.id.textView)
+
+            view.setOnClickListener {
+
+                textView.paintFlags = (Paint.STRIKE_THRU_TEXT_FLAG)
+                MainActivity.updateItem(view)
+            }
         }
 
     }
@@ -29,8 +36,6 @@ class CustomAdapter(private val mList: List<ItemsViewModel>) : RecyclerView.Adap
 
         holder.textView.text = itemsViewModel.text
     }
-
-
 
     override fun getItemCount() = mList.size
 

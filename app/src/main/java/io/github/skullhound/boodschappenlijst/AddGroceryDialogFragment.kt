@@ -18,7 +18,9 @@ class AddGroceryDialogFragment : DialogFragment() {
                 .setCancelable(true)
                 .setPositiveButton(R.string.ok
                 ) { _, _ ->
-                    MainActivity.addGrocery(textInput.text.toString())
+                    if (textInput.text.isNotEmpty()) {
+                        MainActivity.addGrocery(textInput.text.toString())
+                    }
                 }
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")

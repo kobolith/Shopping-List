@@ -33,6 +33,12 @@ class MainActivity : AppCompatActivity() {
             val adapter = CustomAdapter(data)
             recyclerView.adapter = adapter
         }
+
+        fun updateItem(item: ItemsViewModel) {
+            val index = data.indexOf(item)
+
+            data[index] = item
+        }
     }
 
 }
