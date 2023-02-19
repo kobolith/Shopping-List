@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Boodschappen Lijst</string>
+    <string name="add_button_description">Voeg boodschappen toe</string>
+    <string name="ok">OK</string>
 </resources>

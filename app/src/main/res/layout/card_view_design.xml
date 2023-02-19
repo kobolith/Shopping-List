@@ -4,17 +4,31 @@
     android:id="@+id/cardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
+    android:layout_margin="5dp"
     app:cardBackgroundColor="#DCDCDC"
     app:cardCornerRadius="3dp"
     app:contentPadding="12dp">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#121212">
+        android:orientation="horizontal"
+        android:padding="5dp">
 
-    </TextView>
+<!--        <ImageView-->
+<!--            android:id="@+id/imageView"-->
+<!--            android:layout_width="16dp"-->
+<!--            android:layout_height="16dp"-->
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#121212"
+            android:layout_marginStart="10dp" />
+
+
+    </LinearLayout>
 
 </androidx.cardview.widget.CardView>

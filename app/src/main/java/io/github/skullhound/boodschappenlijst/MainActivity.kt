@@ -1,26 +1,38 @@
 package io.github.skullhound.boodschappenlijst
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import android.widget.ImageButton
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+
+lateinit var data: ArrayList<ItemsViewModel>
+lateinit var recyclerView: RecyclerView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        val data = ArrayList<ItemsViewModel>()
-        val adapter = CustomAdapter(data)
-        recyclerView.adapter = adapter
+        data = ArrayList()
 
-        fun addGrocery(view: View) {
-            data.add(ItemsViewModel("Lorem Ipsum Grocery"))
+        val button: ImageButton = findViewById(R.id.imageButton)
+        button.setOnClickListener {
+            val dialog = AddGroceryDialogFragment()
+            dialog.show(supportFragmentManager, "")
         }
-
     }
+
+    companion object {
+        fun addGrocery(groceryDesc: String) {
+            data.add(ItemsViewModel("• $groceryDesc"))
+
+            val adapter = CustomAdapter(data)
+            recyclerView.adapter = adapter
+        }
+    }
+
 }
