@@ -27,17 +27,27 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        fun addGrocery(groceryDesc: String) {
+        fun addItem(groceryDesc: String) {
             data.add(ItemsViewModel("• $groceryDesc"))
 
             val adapter = CustomAdapter(data)
             recyclerView.adapter = adapter
         }
 
-        fun updateItem(item: ItemsViewModel) {
-            val index = data.indexOf(item)
+        fun removeItem(item: ItemsViewModel): Boolean {
+            val success = data.remove(item)
 
-            data[index] = item
+            val adapter = CustomAdapter(data)
+            recyclerView.adapter = adapter
+
+            return success
+        }
+
+        fun updateItem(item: ItemsViewModel) {
+            data[data.indexOf(item)] = item
+
+            val adapter = CustomAdapter(data)
+            recyclerView.adapter = adapter
         }
     }
 

@@ -14,12 +14,6 @@ class CustomAdapter(private val mList: List<ItemsViewModel>) : RecyclerView.Adap
 
         init {
             textView = view.findViewById(R.id.textView)
-
-            view.setOnClickListener {
-
-                textView.paintFlags = (Paint.STRIKE_THRU_TEXT_FLAG)
-                MainActivity.updateItem(view)
-            }
         }
 
     }
@@ -32,9 +26,22 @@ class CustomAdapter(private val mList: List<ItemsViewModel>) : RecyclerView.Adap
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val itemsViewModel = mList[position]
+        val item = mList[position]
 
-        holder.textView.text = itemsViewModel.text
+        holder.textView.text = item.text
+
+        if (item.crossedOff) {
+            holder.textView.paintFlags = (Paint.STRIKE_THRU_TEXT_FLAG)
+        }
+
+        holder.itemView.setOnClickListener {
+            item.crossedOff = !item.crossedOff
+            MainActivity.updateItem(item)
+        }
+
+        holder.itemView.setOnLongClickListener {
+            MainActivity.removeItem(item)
+        }
     }
 
     override fun getItemCount() = mList.size

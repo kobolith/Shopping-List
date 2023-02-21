@@ -19,7 +19,7 @@ class AddGroceryDialogFragment : DialogFragment() {
                 .setPositiveButton(R.string.ok
                 ) { _, _ ->
                     if (textInput.text.isNotEmpty()) {
-                        MainActivity.addGrocery(textInput.text.toString())
+                        MainActivity.addItem(textInput.text.toString())
                     }
                 }
             builder.create()
