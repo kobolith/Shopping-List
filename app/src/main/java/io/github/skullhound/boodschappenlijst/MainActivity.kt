@@ -22,11 +22,12 @@ class MainActivity : AppCompatActivity() {
         val button: ImageButton = findViewById(R.id.imageButton)
         button.setOnClickListener {
             val dialog = AddGroceryDialogFragment()
-            dialog.show(supportFragmentManager, "")
+            dialog.show(supportFragmentManager, "ye")
         }
     }
 
     companion object {
+
         fun addItem(groceryDesc: String) {
             data.add(ItemsViewModel("• $groceryDesc"))
 
@@ -49,6 +50,7 @@ class MainActivity : AppCompatActivity() {
             val adapter = CustomAdapter(data)
             recyclerView.adapter = adapter
         }
+
     }
 
 }

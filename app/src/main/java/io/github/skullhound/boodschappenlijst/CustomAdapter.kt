@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 
 class CustomAdapter(private val mList: List<ItemsViewModel>) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
@@ -40,8 +42,13 @@ class CustomAdapter(private val mList: List<ItemsViewModel>) : RecyclerView.Adap
         }
 
         holder.itemView.setOnLongClickListener {
-            MainActivity.removeItem(item)
+            //MainActivity.removeItem(item)
+            val dialog = UpdateModifyDialogFragment(item)
+            dialog.show(MainActivity.supportFragmentManager, "a")
+            //holder.itemView.left = 50
+            true
         }
+
     }
 
     override fun getItemCount() = mList.size
