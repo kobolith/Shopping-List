@@ -27,4 +27,8 @@ class AddGroceryDialogFragment : DialogFragment() {
 
     }
 
+    companion object {
+        const val TAG = "AddGroceryDialog"
+    }
+
 }

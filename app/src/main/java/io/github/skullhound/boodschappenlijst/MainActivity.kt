@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         val button: ImageButton = findViewById(R.id.imageButton)
         button.setOnClickListener {
             val dialog = AddGroceryDialogFragment()
-            dialog.show(supportFragmentManager, "ye")
+            dialog.show(supportFragmentManager, AddGroceryDialogFragment.TAG)
         }
     }
 

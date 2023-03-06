@@ -26,7 +26,10 @@ class UpdateModifyDialogFragment(item: Any?) : DialogFragment() {
                 }
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
+    }
 
+    companion object {
+        const val TAG = "UpdateModifyDialog"
     }
 
 }
