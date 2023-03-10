@@ -26,31 +26,26 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    companion object {
+    fun addItem(groceryDesc: String) {
+        data.add(ItemsViewModel("• $groceryDesc"))
 
-        fun addItem(groceryDesc: String) {
-            data.add(ItemsViewModel("• $groceryDesc"))
-
-            val adapter = CustomAdapter(data)
-            recyclerView.adapter = adapter
-        }
-
-        fun removeItem(item: ItemsViewModel): Boolean {
-            val success = data.remove(item)
-
-            val adapter = CustomAdapter(data)
-            recyclerView.adapter = adapter
-
-            return success
-        }
-
-        fun updateItem(item: ItemsViewModel) {
-            data[data.indexOf(item)] = item
-
-            val adapter = CustomAdapter(data)
-            recyclerView.adapter = adapter
-        }
-
+        val adapter = CustomAdapter(data, this)
+        recyclerView.adapter = adapter
     }
 
+    fun removeItem(item: ItemsViewModel): Boolean {
+        val success = data.remove(item)
+
+        val adapter = CustomAdapter(data, this)
+        recyclerView.adapter = adapter
+
+        return success
+    }
+
+    fun updateItem(item: ItemsViewModel) {
+        data[data.indexOf(item)] = item
+
+        val adapter = CustomAdapter(data, this)
+        recyclerView.adapter = adapter
+    }
 }

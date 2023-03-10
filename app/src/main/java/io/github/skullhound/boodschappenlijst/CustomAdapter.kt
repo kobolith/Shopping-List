@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class CustomAdapter(private val mList: List<ItemsViewModel>) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
+class CustomAdapter(private val mList: List<ItemsViewModel>, private val activity: MainActivity) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textView: TextView
@@ -36,14 +36,14 @@ class CustomAdapter(private val mList: List<ItemsViewModel>) : RecyclerView.Adap
 
         holder.itemView.setOnClickListener {
             item.crossedOff = !item.crossedOff
-            MainActivity.updateItem(item)
+            activity.updateItem(item)
         }
 
         holder.itemView.setOnLongClickListener {
             //MainActivity.removeItem(item)
             val dialog = UpdateModifyDialogFragment(item)
             dialog.show(
-                // TODO: Fix this stupid dialog,
+                activity.supportFragmentManager,
                 UpdateModifyDialogFragment.TAG
             )
             //holder.itemView.left = 50
@@ -53,5 +53,4 @@ class CustomAdapter(private val mList: List<ItemsViewModel>) : RecyclerView.Adap
     }
 
     override fun getItemCount() = mList.size
-
 }

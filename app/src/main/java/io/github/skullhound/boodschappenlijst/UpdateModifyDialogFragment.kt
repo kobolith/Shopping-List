@@ -21,7 +21,8 @@ class UpdateModifyDialogFragment(item: Any?) : DialogFragment() {
                 .setPositiveButton(R.string.ok
                 ) { _, _ ->
                     if (textInput.text.isNotEmpty()) {
-                        MainActivity.addItem(textInput.text.toString())
+                        if (it is MainActivity)
+                            it.addItem(textInput.text.toString())
                     }
                 }
             builder.create()
