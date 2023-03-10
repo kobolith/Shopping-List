@@ -43,7 +43,7 @@ class CustomAdapter(private val mList: List<ItemsViewModel>) : RecyclerView.Adap
             //MainActivity.removeItem(item)
             val dialog = UpdateModifyDialogFragment(item)
             dialog.show(
-                ,
+                // TODO: Fix this stupid dialog,
                 UpdateModifyDialogFragment.TAG
             )
             //holder.itemView.left = 50
