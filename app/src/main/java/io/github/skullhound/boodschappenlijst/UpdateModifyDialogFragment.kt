@@ -6,23 +6,27 @@ import android.os.Bundle
 import android.widget.EditText
 import androidx.fragment.app.DialogFragment
 
-class UpdateModifyDialogFragment(item: Any?) : DialogFragment() {
+class UpdateModifyDialogFragment(private val item: ItemsViewModel) : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity.let {
             val builder = AlertDialog.Builder(it)
             val textInput = EditText(it)
 
-            textInput.text = null
+            textInput.setText(item.text)
 
-            builder.setTitle("Modify")
+            builder.setTitle(getString(R.string.modify_title))
                 .setView(textInput)
                 .setCancelable(true)
-                .setPositiveButton(R.string.ok
+                .setPositiveButton(R.string.update
                 ) { _, _ ->
                     if (textInput.text.isNotEmpty()) {
-                        MainActivity.addItem(textInput.text.toString())
+                        (it as MainActivity).updateItem(item, textInput.text.toString())
                     }
+                }
+                .setNegativeButton(R.string.remove,
+                ) { _, _ ->
+                    (it as MainActivity).removeItem(item)
                 }
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")

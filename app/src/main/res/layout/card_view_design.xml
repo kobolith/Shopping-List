@@ -16,11 +16,14 @@
         android:orientation="horizontal"
         android:padding="5dp">
 
-<!--        <ImageView-->
-<!--            android:id="@+id/imageView"-->
-<!--            android:layout_width="16dp"-->
-<!--            android:layout_height="16dp"-->
 
+        <ImageView
+            android:id="@+id/checkBox"
+            android:layout_width="19dp"
+            android:layout_height="19dp"
+            android:textColor="#121212"
+            android:layout_marginStart="5dp"
+            android:contentDescription="@string/checkbox" />
 
         <TextView
             android:id="@+id/textView"
@@ -28,6 +31,8 @@
             android:layout_height="wrap_content"
             android:textColor="#121212"
             android:layout_marginStart="5dp" />
+
+
 
 
     </LinearLayout>

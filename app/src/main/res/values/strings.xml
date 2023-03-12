@@ -1,5 +1,12 @@
 <resources>
-    <string name="app_name">Boodschappen Lijst</string>
-    <string name="add_button_description">Voeg boodschappen toe</string>
+    <string name="app_name">Shopping List</string>
+    <string name="add_button_description">Add items to shopping list</string>
     <string name="ok">OK</string>
+    <string name="remove">Remove</string>
+    <string name="update">Update</string>
+    <string name="item_name">• %s</string>
+    <string name="modify_title">Modify Item</string>
+    <string name="add_title">Add Item</string>
+    <string name="checkbox">Checkbox Icon</string>
+    <string name="filter_button_descriptor">Filter selector</string>
 </resources>

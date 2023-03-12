@@ -13,13 +13,13 @@ class AddGroceryDialogFragment : DialogFragment() {
             val builder = AlertDialog.Builder(it)
             val textInput = EditText(it)
 
-            builder.setTitle("Add Grocery")
+            builder.setTitle(getString(R.string.add_title))
                 .setView(textInput)
                 .setCancelable(true)
                 .setPositiveButton(R.string.ok
                 ) { _, _ ->
                     if (textInput.text.isNotEmpty()) {
-                        MainActivity.addItem(textInput.text.toString())
+                        (it as MainActivity).addItem(textInput.text.toString())
                     }
                 }
             builder.create()
