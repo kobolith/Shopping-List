@@ -46,6 +46,10 @@ class CustomAdapter(private val mList: List<ItemsViewModel>, private val activit
         } else if (!item.crossedOff && activity.filterState == 2) {
             holder.cardView.visibility = View.GONE
             holder.cardView.layoutParams = RecyclerView.LayoutParams(0, 0)
+        } else {
+            holder.itemView.visibility = View.VISIBLE;
+            holder.itemView.layoutParams = RecyclerView.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         }
 
         holder.itemView.setOnClickListener {
