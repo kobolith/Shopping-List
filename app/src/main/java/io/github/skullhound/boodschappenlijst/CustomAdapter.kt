@@ -34,13 +34,15 @@ class CustomAdapter(private val mList: List<ItemsViewModel>, private val activit
         val item = mList[position]
         holder.textView.text = item.text
 
-
+        // Check-off logic
         if (item.checkedOff) {
             holder.checkboxIcon.setImageResource(R.drawable.checkbox_marked)
         } else {
             holder.checkboxIcon.setImageResource(R.drawable.checkbox_blank)
         }
 
+
+        // Filter logic
         if (item.checkedOff && activity.filterState == 1) {
             holder.cardView.visibility = View.GONE
             holder.cardView.layoutParams = RecyclerView.LayoutParams(0, 0)

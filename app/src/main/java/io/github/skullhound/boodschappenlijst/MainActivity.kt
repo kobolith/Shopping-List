@@ -16,6 +16,12 @@ class MainActivity : AppCompatActivity() {
 
     var filterState: Int = 0
 
+    // Refreshes the Recycler View
+    private fun bindRecyclerView() {
+        val adapter = CustomAdapter(data, this)
+        recyclerView.adapter = adapter
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -33,6 +39,7 @@ class MainActivity : AppCompatActivity() {
 
         val filterImage: ImageView = findViewById(R.id.filterImage)
 
+        // Filter logic
         val filterButton: ImageButton = findViewById(R.id.filterButton)
         filterButton.setOnClickListener {
             when (filterState) {
@@ -55,23 +62,20 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            val adapter = CustomAdapter(data, this)
-            recyclerView.adapter = adapter
+            bindRecyclerView()
         }
     }
 
     fun addItem(groceryDesc: String) {
         data.add(ItemsViewModel(groceryDesc))
 
-        val adapter = CustomAdapter(data, this)
-        recyclerView.adapter = adapter
+        bindRecyclerView()
     }
 
     fun removeItem(item: ItemsViewModel): Boolean {
         val success = data.remove(item)
 
-        val adapter = CustomAdapter(data, this)
-        recyclerView.adapter = adapter
+        bindRecyclerView()
 
         return success
     }
@@ -80,8 +84,7 @@ class MainActivity : AppCompatActivity() {
         item.text = string
         data[data.indexOf(item)] = item
 
-        val adapter = CustomAdapter(data, this)
-        recyclerView.adapter = adapter
+        bindRecyclerView()
     }
 
 }
