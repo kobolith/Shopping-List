@@ -11,14 +11,14 @@ import androidx.recyclerview.widget.RecyclerView
 class CustomAdapter(private val mList: List<ItemsViewModel>, private val activity: MainActivity) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val cardView: CardView
         val textView: TextView
         val checkboxIcon: ImageView
-        val cardView: CardView
 
         init {
+            cardView = view.findViewById(R.id.cardView)
             textView = view.findViewById(R.id.textView)
             checkboxIcon = view.findViewById(R.id.checkBox)
-            cardView = view.findViewById(R.id.cardView)
         }
 
     }
@@ -34,26 +34,23 @@ class CustomAdapter(private val mList: List<ItemsViewModel>, private val activit
         val item = mList[position]
         holder.textView.text = item.text
 
-        if (item.crossedOff) {
+
+        if (item.checkedOff) {
             holder.checkboxIcon.setImageResource(R.drawable.checkbox_marked)
         } else {
             holder.checkboxIcon.setImageResource(R.drawable.checkbox_blank)
         }
 
-        if (item.crossedOff && activity.filterState == 1) {
+        if (item.checkedOff && activity.filterState == 1) {
             holder.cardView.visibility = View.GONE
             holder.cardView.layoutParams = RecyclerView.LayoutParams(0, 0)
-        } else if (!item.crossedOff && activity.filterState == 2) {
+        } else if (!item.checkedOff && activity.filterState == 2) {
             holder.cardView.visibility = View.GONE
             holder.cardView.layoutParams = RecyclerView.LayoutParams(0, 0)
-        } else {
-            holder.itemView.visibility = View.VISIBLE;
-            holder.itemView.layoutParams = RecyclerView.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         }
 
         holder.itemView.setOnClickListener {
-            item.crossedOff = !item.crossedOff
+            item.checkedOff = !item.checkedOff
             activity.updateItem(item, item.text)
         }
 
